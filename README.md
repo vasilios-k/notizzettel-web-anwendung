@@ -1,3 +1,5 @@
+[![Deploy](https://github.com/vasilios-k/notizzettel-web-anwendung/actions/workflows/gradle.yml/badge.svg)](https://github.com/vasilios-k/notizzettel-web-anwendung/actions/workflows/gradle.yml) [![CD](https://github.com/vasilios-k/notizzettel-web-anwendung/actions/workflows/main.yml/badge.svg)](https://github.com/vasilios-k/notizzettel-web-anwendung/actions/workflows/main.yml)
+`
 # Notizzettel-Web-Anwendung
 
 Eine kleine Notizzettel - Webanwendung zum verwalten von Notizzetteln.
