@@ -1,15 +1,20 @@
 package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api;
 
+import java.util.List;
+
 public class Person {
 
     private long id;
     private String firstName;
     private String lastName;
 
-    public Person(long id, String firstName, String lastName) {
+    private List<Long> notes;
+
+    public Person(long id, String firstName, String lastName,List<Long> notes) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.notes = notes;
     }
 
     public long getId() {
@@ -36,4 +41,11 @@ public class Person {
         this.lastName = lastName;
     }
 
+    public List<Long> getNotes() {
+        return notes;
+    }
+
+    public void setNotes(List<Long> notes) {
+        this.notes = notes;
+    }
 }
