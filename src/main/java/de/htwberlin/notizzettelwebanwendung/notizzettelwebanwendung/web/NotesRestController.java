@@ -4,6 +4,7 @@ import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.service.Note
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.Notes;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.NotesManipulationRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 @RestController
 public class NotesRestController {
-
+    @Autowired
     private final NotesService notesService;
 
     public NotesRestController(NotesService notesService) {

@@ -1,8 +1,10 @@
 package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web;
 
+import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.persistence.PersonEntity;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.service.PersonService;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.Person;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.PersonManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +14,7 @@ import java.util.List;
 
 @RestController
 public class PersonRestController {
-
+    @Autowired
     private final PersonService personService;
 
     public PersonRestController(PersonService personService) {
@@ -28,6 +30,11 @@ public class PersonRestController {
     public ResponseEntity<Person> fetchPersonById(@PathVariable Long id) {
         var person = personService.findById(id);
         return person != null? ResponseEntity.ok(person) : ResponseEntity.notFound().build();
+    }
+
+    @GetMapping(path = "/api/persons", params = "firstName")
+    public ResponseEntity<List<PersonEntity>> getPersonByFirstName(@RequestParam String firstName){
+        return ResponseEntity.ok(personService.findByFirstName(firstName));
     }
 
     @PostMapping(path = "/api/persons")

@@ -3,6 +3,7 @@ package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.service;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.persistence.*;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.Notes;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.NotesManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,9 +11,11 @@ import java.util.stream.Collectors;
 
 @Service
 public class NotesService {
-
+    @Autowired
     private final NotesRepository notesRepository;
+    @Autowired
     private final PersonRepository personRepository;
+    @Autowired
     private final PersonTransformer personTransformer;
 
     public NotesService(NotesRepository notesRepository, PersonRepository personRepository, PersonTransformer personTransformer) {

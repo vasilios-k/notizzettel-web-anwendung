@@ -4,6 +4,7 @@ import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.persistence.
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.persistence.PersonRepository;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.Person;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.PersonManipulationRequest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,8 +12,9 @@ import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
-
+    @Autowired
     private final PersonRepository personRepository;
+    @Autowired
     private final PersonTransformer personTransformer;
 
     public PersonService(PersonRepository personRepository, PersonTransformer personTransformer) {
@@ -30,6 +32,12 @@ public class PersonService {
     public Person findById(Long id) {
         var personEntity = personRepository.findById(id);
         return personEntity.map(personTransformer::transformEntity).orElse(null);
+    }
+
+    public List<PersonEntity> findByFirstName(String firstName) {
+      // var personEntities = personRepository.findAllByFirstName(firstName);
+       // List<PersonEntity> a = personEntities.stream().map(personTransformer::transformEntity).collect(Collectors.toList());
+        return personRepository.findAllByFirstName(firstName) ;
     }
 
     public Person create(PersonManipulationRequest request) {
