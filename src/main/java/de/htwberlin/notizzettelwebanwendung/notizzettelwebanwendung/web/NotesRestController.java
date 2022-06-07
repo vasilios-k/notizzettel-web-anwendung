@@ -14,7 +14,6 @@ import java.util.List;
 
 @RestController
 public class NotesRestController {
-    @Autowired
     private final NotesService notesService;
 
     public NotesRestController(NotesService notesService) {

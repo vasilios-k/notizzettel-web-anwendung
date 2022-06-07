@@ -1,16 +1,11 @@
 package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api;
 
-import javax.validation.constraints.Pattern;
-
 public class NotesManipulationRequest {
 
     private String headline;
 
     private String text;
-    @Pattern(
-            regexp = "SCHOOL|JOB|PERSONAL|UNKNOWN",
-            message =  "Please provide 'SCHOOL', 'JOB', 'PERSONAL'; 'UNKNOWM' for category"
-    )
+
     private String category;
     private Long ownerId;
 

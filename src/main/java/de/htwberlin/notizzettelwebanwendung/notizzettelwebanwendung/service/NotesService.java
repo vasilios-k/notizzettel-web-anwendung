@@ -11,11 +11,10 @@ import java.util.stream.Collectors;
 
 @Service
 public class NotesService {
-    @Autowired
     private final NotesRepository notesRepository;
-    @Autowired
+
     private final PersonRepository personRepository;
-    @Autowired
+
     private final PersonTransformer personTransformer;
 
     public NotesService(NotesRepository notesRepository, PersonRepository personRepository, PersonTransformer personTransformer) {

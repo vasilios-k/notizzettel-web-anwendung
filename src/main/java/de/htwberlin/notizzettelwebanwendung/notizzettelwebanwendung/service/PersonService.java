@@ -12,9 +12,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class PersonService {
-    @Autowired
     private final PersonRepository personRepository;
-    @Autowired
+
     private final PersonTransformer personTransformer;
 
     public PersonService(PersonRepository personRepository, PersonTransformer personTransformer) {
