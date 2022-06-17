@@ -7,7 +7,10 @@ public class PersonManipulationRequest {
     private String firstName;
     private String lastName;
 
-
+public PersonManipulationRequest(String firstName, String lastName){
+    this.firstName = firstName;
+    this.lastName = lastName;
+    }
     public PersonManipulationRequest() {}
 
     public String getFirstName() {
