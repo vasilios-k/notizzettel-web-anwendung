@@ -1,5 +1,6 @@
 package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api;
 
+
 public class NotesManipulationRequest {
 
     private String headline;
@@ -8,6 +9,7 @@ public class NotesManipulationRequest {
 
     private String category;
     private Long ownerId;
+
 
     public NotesManipulationRequest(String headline, String text, String category, Long ownerId) {
         this.headline = headline;
@@ -47,4 +49,5 @@ public NotesManipulationRequest(){}
     public void setOwnerId(Long ownerId) {
         this.ownerId = ownerId;
     }
+
 }

@@ -1,5 +1,7 @@
 package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api;
 
+import java.util.Date;
+
 public class Notes {
 
 
@@ -9,12 +11,15 @@ public class Notes {
     private String category;
     private Person person;
 
-    public Notes(Long id, String headline,String text, String category, Person person) {
+    private String date;
+
+    public Notes(Long id, String headline,String text, String category, Person person, String date) {
         this.id = id;
         this.headline = headline;
         this.text = text;
         this.category = category;
         this.person = person;
+        this.date = date;
     }
 
     public Long getId() {
@@ -55,5 +60,13 @@ public class Notes {
 
     public void setPerson(Person person) {
         this.person = person;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

@@ -2,6 +2,7 @@ package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.persistence
 
 import javax.persistence.*;
 
+
 @Entity(name = "notes")
 public class NotesEntity {
 
@@ -24,14 +25,19 @@ public class NotesEntity {
     @JoinColumn(name = "owner_id", referencedColumnName = "id")
     private PersonEntity owner;
 
+    @Column(name = "datum")
+    private String date;
+
+
     public NotesEntity() {
     }
 
-    public NotesEntity(String headline,String text,Category category, PersonEntity owner) {
+    public NotesEntity(String headline,String text,Category category, PersonEntity owner, String date ) {
         this.headline = headline;
         this.text = text;
         this.category = category;
         this.owner = owner;
+        this.date = date;
     }
 
     public Long getId() {
@@ -68,5 +74,13 @@ public class NotesEntity {
 
     public void setOwner(PersonEntity owner) {
         this.owner = owner;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

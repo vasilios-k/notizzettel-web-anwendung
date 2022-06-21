@@ -3,9 +3,10 @@ package de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.service;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.persistence.*;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.Notes;
 import de.htwberlin.notizzettelwebanwendung.notizzettelwebanwendung.web.api.NotesManipulationRequest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,7 +39,10 @@ public class NotesService {
     public Notes create(NotesManipulationRequest request) {
         var category = Category.valueOf(request.getCategory());
         var owner = personRepository.findById(request.getOwnerId()).orElseThrow();
-        var notesEntity = new NotesEntity(request.getHeadline(),request.getText(), category, owner);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ssZ");
+        Date datenow = new Date();
+        String date = formatter.format(datenow);
+        var notesEntity = new NotesEntity(request.getHeadline(),request.getText(), category, owner, date);
         notesEntity = notesRepository.save(notesEntity);
         return transformEntity(notesEntity);
     }
@@ -50,8 +54,11 @@ public class NotesService {
         }var notesEntity = notesEntityOptional.get();
         notesEntity.setHeadline(request.getHeadline());
         notesEntity.setText(request.getText());
-        notesEntity.setCategory(Category.valueOf(request.getCategory()));
-        //notesEntity.setOwner(request.getOwnerId().);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ssZ");
+        Date datenow = new Date();
+        String date = formatter.format(datenow);
+        notesEntity.setDate(date);
+
        notesEntity = notesRepository.save(notesEntity);
 
         return transformEntity(notesEntity);
@@ -74,6 +81,8 @@ public class NotesService {
                 notesEntity.getHeadline(),
                 notesEntity.getText(),
                 category,
-                personTransformer.transformEntity(notesEntity.getOwner()));
+                personTransformer.transformEntity(notesEntity.getOwner()),
+                notesEntity.getDate()
+        );
     }
 }
