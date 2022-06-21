@@ -15,7 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
                 .allowedMethods("*")
                 .allowedOrigins(
                         "http://localhost:3000",
-                        "https://notes-fronted.herokuapp.com"
+                        "https://notizzettel-web-frontend.herokuapp.com"
                 );
     }
 }
